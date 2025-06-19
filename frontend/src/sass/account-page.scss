@@ -1,0 +1,66 @@
+.account-main-container{
+    width: 80%;
+    // height: 500px;
+    margin: auto;
+    margin-top: 60px;
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .account-name-email-container{
+        height: 150px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        h2{
+            font-weight: bold;
+        }
+        .account-name{
+            font-size: 40px;
+        }
+    }
+    .account-address{
+        height: 80px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+    }
+    .account-orders-container{
+        width: 80%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        
+        .orders-general-meta{
+            height: 50px;
+            background-color: black;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 20px;
+
+            h3{
+                font-size: 25px;
+                font-weight: bold;
+                color: white;
+            }
+            .general-meta-left-side{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                gap: 50px;
+            }
+            .general-meta-right-side{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 50px;
+            }
+        }
+    }
+}

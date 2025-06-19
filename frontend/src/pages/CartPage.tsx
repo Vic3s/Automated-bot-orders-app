@@ -1,13 +1,14 @@
-import { data } from "react-router";
 import "../styles/cart-page.css"
 import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar";
 import { CartItem } from "../components/CartItem";
+import { getCartProductsObject, getTotalPrice} from "../add-func/CartLocalStorage";
 
 
 export const CartPage = () => {
 
     const[cartItems, setCartItems] = useState([]);
+    const[total, setTotal] = useState(0);
 
     const getCartItems = () => {
         const cartProducts = sessionStorage.getItem("cartProducts");
@@ -24,7 +25,11 @@ export const CartPage = () => {
         }        
     }
 
+
+
     const GetCartItemsInfo = () => {
+
+        setTotal(getTotalPrice());
 
         fetch("http://localhost:5000/get-products-multiple", {
             method: "GET",
@@ -44,7 +49,10 @@ export const CartPage = () => {
 
     const SendOrder = () => {
 
-        const orderObject: Object = {} 
+        const orderObject: Object = {
+            products: getCartProductsObject(),
+            total: getTotalPrice()
+        } 
 
         fetch("http://localhost:5000/post-order", {
             method: 'POST',
@@ -52,7 +60,7 @@ export const CartPage = () => {
                 "Content-Type" : "application/json"
             },
             credentials: "include",
-            body: JSON.stringify({ order: orderObject })
+            body: JSON.stringify(orderObject)
         })
     }
 
@@ -86,14 +94,12 @@ export const CartPage = () => {
                     <div className="total-price">
                         <div className="total-price-text">
                             <span>Total:</span>
-                            <h3>$54</h3>
+                            <h3>{total}</h3>
                         </div>
                         <button className="send-order-btn" onClick={SendOrder}>Order</button>
                     </div>
                 </div>
-                
             </div>
         </>
     )
-
 }

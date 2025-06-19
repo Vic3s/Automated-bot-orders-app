@@ -1,0 +1,58 @@
+.order-item-container {
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-item-container .order-item-left-side {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.order-item-container .order-item-left-side .order-number-container h3 {
+  font-weight: bold;
+}
+.order-item-container .order-item-left-side .bot-path-container {
+  width: 50%;
+}
+.order-item-container .order-item-left-side .bot-path-container h3 {
+  font-size: 25px;
+}
+.order-item-container .order-item-right-side {
+  width: 23%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.order-item-container .order-item-right-side .products-list-order-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-item-container .order-item-right-side .products-list-order-container .product-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.order-item-container .order-item-right-side .products-list-order-container .product-item-container h3 {
+  font-size: 25px;
+}
+.order-item-container .order-item-right-side .products-list-order-container .product-item-container .product-name-order {
+  font-weight: bold;
+}
+.order-item-container .order-item-right-side .total-price-order-container {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-item-container .order-item-right-side .total-price-order-container h2 {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=order-item.css.map */

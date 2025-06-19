@@ -1,13 +1,13 @@
 import "../styles/cart-item.css"
 import { useState, useEffect } from "react"
-import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../static/quantityFunctionality"
-import type { ObjectType } from "../static/Types"
+import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/quantityFunctionality"
+import type { ObjectType } from "../add-func/Types"
 
-interface ProductItemCart {
+interface IcartItem {
   cartItemData: ObjectType;
 }
 
-export const CartItem: React.FC<ProductItemCart> = ({cartItemData}) => {
+export const CartItem: React.FC<IcartItem> = ({cartItemData}) => {
 
     const apiKey = import.meta.env.VITE_API_KEY;
 

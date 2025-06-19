@@ -1,0 +1,60 @@
+.login-page-container {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-page-container .login-form-container {
+  width: 25%;
+  height: 70%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.login-page-container .login-form-container .login-heading-container {
+  width: 100%;
+  height: 20%;
+  background-color: #5e9693;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-page-container .login-form-container .login-heading-container h1 {
+  font-weight: bold;
+}
+.login-page-container .login-form-container .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-page-container .login-form-container .login-form .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-page-container .login-form-container .login-form .button-container {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.login-page-container .login-form-container .login-form .button-container button {
+  border: none;
+  background-color: #5e9693;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.login-page-container .login-form-container .login-form .button-container button:hover {
+  background-color: #325c5a;
+}
+.login-page-container .login-form-container .register-page-redirect p .link-register {
+  text-decoration: none;
+  color: #5e9693;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=login-page.css.map */

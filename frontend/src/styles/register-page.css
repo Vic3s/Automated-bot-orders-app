@@ -1,0 +1,75 @@
+.register-page-container {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-page-container .register-form-container {
+  width: 40%;
+  height: 70%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.register-page-container .register-form-container .register-heading-container {
+  width: 100%;
+  height: 20%;
+  background-color: #5e9693;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-page-container .register-form-container .register-heading-container h1 {
+  font-weight: bold;
+}
+.register-page-container .register-form-container .register-form {
+  height: 35%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.register-page-container .register-form-container .register-form .form-left-side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.register-page-container .register-form-container .register-form .form-right-side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.register-page-container .register-form-container .register-form .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.register-page-container .register-form-container .register-form .button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.register-page-container .register-form-container .register-form .button-container button {
+  border: none;
+  background-color: #5e9693;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.register-page-container .register-form-container .register-form .button-container button:hover {
+  background-color: #325c5a;
+}
+.register-page-container .register-form-container .login-page-redirect p .link-login {
+  text-decoration: none;
+  color: #5e9693;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=register-page.css.map */

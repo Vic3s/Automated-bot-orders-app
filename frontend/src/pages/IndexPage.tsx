@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar"
 import { Footer } from "../components/Footer"
 import { ProductItemCard } from "../components/ProductItemCard"
-import type { ObjectType } from "../static/Types"
+import type { ObjectType } from "../add-func/Types"
 
 export const IndexPage = () => {
 
@@ -23,7 +23,7 @@ export const IndexPage = () => {
   }
   useEffect(() => {
     GetProducts();
-  })
+  }, [])
 
   return (
     <>

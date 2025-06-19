@@ -1,14 +1,14 @@
 import "../styles/product.css"
 import { useState, useEffect} from "react"
-import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality, CreateCartObject} from "../static/quantityFunctionality"
-import type { ObjectType } from "../static/Types";
+import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality, CreateCartObject} from "../add-func/quantityFunctionality"
+import type { ObjectType } from "../add-func/Types";
 
 //ProductType interface
-interface ProductItemCard {
+interface IProductItem {
   productData: ObjectType;
 }
 
-export const ProductItemCard: React.FC<ProductItemCard> = ({ productData }) => {
+export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
 
     const[mockImage, setMockImage] = useState("");
 

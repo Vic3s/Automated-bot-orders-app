@@ -43,6 +43,8 @@
             }
             .products-cart-container{
                 width: 800px;
+                display: flex;
+                flex-direction: column;
             }
         }
 
@@ -76,13 +78,13 @@
             .send-order-btn{
                 width: 100%;
                 height: 50px;
-                background-color: rgb(139, 202, 222);
+                background-color: #5e9693;
                 border: none;
                 font-size: 30px;
                 font-weight: bold;
                 color: white;
                 &:hover{
-                    background-color: rgb(95, 171, 194);
+                    background-color: #325c5a;
                 }
             }
         }
