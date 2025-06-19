@@ -1,0 +1,91 @@
+.cart-main-container{
+    .heading-container{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .heading-page{
+            font-weight: bold;
+            font-size: 50px;
+        }
+    }
+    .order-info{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+
+        .general-meta{
+            .product-info-container{
+                width: 800px;
+                height: 50px;
+                background-color: rgb(200, 200, 200);
+                padding: 0px 20px 0px 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                h3{
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+                .quantity-price-section{
+                    width: 250px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    gap: 60px;
+                }
+            }
+            .products-cart-container{
+                width: 800px;
+            }
+        }
+
+        
+        .total-price{
+            width: 250px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+
+            .total-price-text{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+
+
+                span{
+                    font-size: 30px ;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                h3{
+                    text-align: center;
+                    margin: 0px;
+                }
+            }
+            .send-order-btn{
+                width: 100%;
+                height: 50px;
+                background-color: rgb(139, 202, 222);
+                border: none;
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+                &:hover{
+                    background-color: rgb(95, 171, 194);
+                }
+            }
+        }
+    }
+    
+}

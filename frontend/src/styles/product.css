@@ -1,0 +1,92 @@
+.product-card-container {
+  width: 250px;
+  height: 445px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.product-card-container .product-name-container {
+  text-align: center;
+}
+.product-card-container .product-name-container .product-name {
+  font-size: 25px;
+  font-weight: bold;
+}
+.product-card-container .image-product-container {
+  width: 250px;
+  height: 300px;
+}
+.product-card-container .image-product-container .image-product {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card-container .price-text-container {
+  display: flex;
+  justify-content: center;
+}
+.product-card-container .price-text-container .price-text {
+  width: 90%;
+  font-family: "Mouser", sans-serif;
+  color: rgb(0, 83, 0);
+}
+.product-card-container .button-add-product-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-card-container .button-add-product-container .button-add-product {
+  width: 95%;
+  height: 85%;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  background-color: rgb(139, 202, 222);
+}
+.product-card-container .button-add-product-container .button-add-product:hover {
+  background-color: rgb(95, 171, 194);
+  cursor: pointer;
+}
+.product-card-container .button-add-product-container .buttons-quantity-select-container {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  height: 85%;
+}
+.product-card-container .button-add-product-container .buttons-quantity-select-container .minus {
+  height: 100%;
+  width: 33%;
+  text-align: center;
+  font-size: 30px;
+  background-color: rgb(139, 202, 222);
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.product-card-container .button-add-product-container .buttons-quantity-select-container .minus:hover {
+  background-color: rgb(95, 171, 194);
+}
+.product-card-container .button-add-product-container .buttons-quantity-select-container .quantity {
+  height: 100%;
+  width: 33%;
+  font-size: 25px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-card-container .button-add-product-container .buttons-quantity-select-container .plus {
+  height: 100%;
+  width: 33%;
+  text-align: center;
+  font-size: 30px;
+  background-color: rgb(95, 171, 194);
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.product-card-container .button-add-product-container .buttons-quantity-select-container .plus:hover {
+  background-color: rgb(52, 112, 130);
+}
+
+/*# sourceMappingURL=product.css.map */

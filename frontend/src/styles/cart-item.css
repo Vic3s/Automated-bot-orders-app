@@ -1,0 +1,75 @@
+.cart-item-container {
+  width: 800px;
+  height: 200px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-item-container .product-info {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 10px;
+}
+.cart-item-container .product-info .image-cart-container img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+.cart-item-container .product-info h3 {
+  font-size: 40px;
+  font-weight: bold;
+}
+.cart-item-container .quantity-price-cart-container {
+  width: 320px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cart-item-container .quantity-price-cart-container .buttons-quantity-select-container {
+  width: 180px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  height: 85%;
+}
+.cart-item-container .quantity-price-cart-container .buttons-quantity-select-container .minus {
+  height: 100%;
+  width: 33%;
+  text-align: center;
+  font-size: 30px;
+  background-color: rgb(139, 202, 222);
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.cart-item-container .quantity-price-cart-container .buttons-quantity-select-container .minus:hover {
+  background-color: rgb(95, 171, 194);
+}
+.cart-item-container .quantity-price-cart-container .buttons-quantity-select-container .quantity {
+  height: 100%;
+  width: 33%;
+  font-size: 25px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-item-container .quantity-price-cart-container .buttons-quantity-select-container .plus {
+  height: 100%;
+  width: 33%;
+  text-align: center;
+  font-size: 30px;
+  background-color: rgb(95, 171, 194);
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.cart-item-container .quantity-price-cart-container .buttons-quantity-select-container .plus:hover {
+  background-color: rgb(52, 112, 130);
+}
+
+/*# sourceMappingURL=cart-item.css.map */
