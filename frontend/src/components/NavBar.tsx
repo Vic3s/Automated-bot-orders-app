@@ -43,7 +43,7 @@ export const NavBar = () => {
     }
 
     useEffect(() => {
-        // UserExistsCheck();
+        UserExistsCheck();
     })
 
     return (

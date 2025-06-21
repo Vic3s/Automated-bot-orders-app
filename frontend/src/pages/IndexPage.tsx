@@ -11,7 +11,7 @@ export const IndexPage = () => {
 
   const GetProducts = () => {
 
-    fetch("https://localhost:5000/api/get-products-all", {
+    fetch("https://localhost:5000/get-product-all", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

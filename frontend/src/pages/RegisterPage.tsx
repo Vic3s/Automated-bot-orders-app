@@ -30,8 +30,8 @@ export const RegisterPage = () => {
             },
             body: JSON.stringify(UserRegisterObject)
         })
-        .then(response => { response.json(); navigate("/login")})
-        .then(data => {console.log(data)})
+        .then(response => response.json())
+        .then(data => {console.log(data); navigate("/login")})
         .catch(err => console.log(err))
     }
 

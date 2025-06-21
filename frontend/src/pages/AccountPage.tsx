@@ -26,7 +26,7 @@ export const AccountPage = () => {
             method: "GET",
             headers: {
                 "Content-Type": "application-json"
-            }
+            },
         })
         .then(response => { return response.json() })
         .then(data => setOrdersAccount(data))

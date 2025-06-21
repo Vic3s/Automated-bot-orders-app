@@ -2,7 +2,7 @@ import "../styles/cart-page.css"
 import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar";
 import { CartItem } from "../components/CartItem";
-import { getCartProductsObject, getTotalPrice} from "../add-func/CartLocalStorage";
+import { DeleteCartObject, getCartProductsObject, getTotalPrice} from "../add-func/CartLocalStorage";
 
 
 export const CartPage = () => {
@@ -31,13 +31,13 @@ export const CartPage = () => {
 
         setTotal(getTotalPrice());
 
-        fetch("http://localhost:5000/get-products-multiple", {
+        fetch("http://localhost:5000/get-product-multiple", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                itemsList: getCartItems()[0]
+                productIds: getCartItems()[0]
             })
         })
         .then(response => response.json())
@@ -52,7 +52,7 @@ export const CartPage = () => {
         const orderObject: Object = {
             products: getCartProductsObject(),
             total: getTotalPrice()
-        } 
+        }
 
         fetch("http://localhost:5000/post-order", {
             method: 'POST',
@@ -62,6 +62,7 @@ export const CartPage = () => {
             credentials: "include",
             body: JSON.stringify(orderObject)
         })
+        DeleteCartObject();
     }
 
     return (

@@ -19,6 +19,8 @@ export type OrderType = {
         total: number
 }  
 export type OrederProductType = {
+        id: string,
         name: string,
-        price: number
+        price: number,
+        quantity: number
 }     

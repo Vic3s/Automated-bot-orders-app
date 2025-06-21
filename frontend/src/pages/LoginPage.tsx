@@ -17,7 +17,7 @@ export const LoginPage = () => {
             password: password,
         }
 
-        fetch("http://localhsot:5000/post-register-data", {
+        fetch("http://localhsot:5000/post-login-data", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"

@@ -1,6 +1,7 @@
 import "../styles/product.css"
 import { useState, useEffect} from "react"
-import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality, CreateCartObject} from "../add-func/quantityFunctionality"
+import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/quantityFunctionality"
+import { CreateCartObject } from "../add-func/CartLocalStorage"
 import type { ObjectType } from "../add-func/Types";
 
 //ProductType interface
@@ -16,7 +17,7 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
 
     const ChangeButtonStyle = (e: any) => {
 
-        CreateCartObject();
+        CreateCartObject(productData);
 
         e.currentTarget.className = "buttons-quantity-select-container"
 
