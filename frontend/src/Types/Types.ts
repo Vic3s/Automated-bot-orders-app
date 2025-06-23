@@ -1,5 +1,5 @@
 export type ObjectType = {
-        id: string,
+        id: number,
         name: string,
         price: number,
         quantity: number,
@@ -12,14 +12,14 @@ export type AccoutnType = {
 }
 
 export type OrderType = {
-        id: string,
+        id: number,
         number: number,
         visitedLocations: Array<Array<number>>,
         products: Array<any>,
         total: number
 }  
 export type OrederProductType = {
-        id: string,
+        id: number,
         name: string,
         price: number,
         quantity: number

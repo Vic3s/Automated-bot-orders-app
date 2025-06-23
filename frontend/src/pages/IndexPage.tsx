@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar"
 import { Footer } from "../components/Footer"
 import { ProductItemCard } from "../components/ProductItemCard"
-import type { ObjectType } from "../add-func/Types"
+import type { ObjectType } from "../Types/Types"
 
 export const IndexPage = () => {
 
@@ -11,7 +11,7 @@ export const IndexPage = () => {
 
   const GetProducts = () => {
 
-    fetch("https://localhost:5000/get-product-all", {
+    fetch("http://localhost:5000/get-product-all", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -31,11 +31,11 @@ export const IndexPage = () => {
         <NavBar />
 
         <div className="product-contents">
-          {products.map((product: ObjectType) => {
+          {/* {products.map((product: ObjectType) => {
             return <>
               <ProductItemCard productData={product}/>
             </>
-          })}
+          })} */}
         </div>
 
         <Footer />

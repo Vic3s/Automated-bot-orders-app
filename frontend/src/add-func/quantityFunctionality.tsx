@@ -1,4 +1,4 @@
-import type { ObjectType } from "./Types";
+import type { ObjectType } from "../Types/Types";
 
 export const DecreaseQuantity = (id: string) => {
     const cartProducts = sessionStorage.getItem("cartProducts");

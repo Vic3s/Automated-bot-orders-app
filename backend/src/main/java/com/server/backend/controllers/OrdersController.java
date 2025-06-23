@@ -1,9 +1,10 @@
-package com.server.backend;
+package com.server.backend.controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.server.backend.dto.OrderData;
+import com.server.backend.services.OrdersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,27 +16,21 @@ import java.util.ArrayList;
 @RestController
 public class OrdersController {
 
+    public final OrdersService ordersService;
+
+    public OrdersController(OrdersService ordersService){
+        this.ordersService = ordersService;
+    }
+
     @PostMapping("/post-order")
     public ResponseEntity<ObjectNode> PostOrder(@RequestBody OrderData body){
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectNode response = mapper.createObjectNode();
-
-        JsonNode products = body.getProducts();
-        int total = body.getTotal();
-
-        //create functionality to format properly and then save to db
-
-        response.put("message", "data received successfully.");
+        ObjectNode response = ordersService.PostOrder(body);
 
         return ResponseEntity.ok(response);
     }
     @GetMapping("get-account-orders")
     public ResponseEntity<ArrayList<ObjectNode>> GetAccountOrders(){
-        ObjectMapper mapper = new ObjectMapper();
-        ArrayList<ObjectNode> response = new ArrayList<>();
-
-        //get the current logged in account id from jwt account object
-        // and use it to ge the orders and fill the response list
+        ArrayList<ObjectNode> response = ordersService.GetAccountOrders();
 
         return ResponseEntity.ok(response);
     }

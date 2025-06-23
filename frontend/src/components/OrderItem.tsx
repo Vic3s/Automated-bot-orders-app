@@ -1,5 +1,5 @@
 import "../styles/order-item.css"
-import type { OrderType, OrederProductType } from "../add-func/Types"
+import type { OrderType, OrederProductType } from "../Types/Types"
 
 interface IOrderItem{
     orderData: OrderType

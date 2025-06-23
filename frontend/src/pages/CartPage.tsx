@@ -25,14 +25,12 @@ export const CartPage = () => {
         }        
     }
 
-
-
     const GetCartItemsInfo = () => {
 
         setTotal(getTotalPrice());
 
         fetch("http://localhost:5000/get-product-multiple", {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },

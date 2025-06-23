@@ -1,6 +1,6 @@
 import "../styles/account-page.css"
 import { useState, useEffect } from "react"
-import type { AccoutnType, OrderType } from "../add-func/Types";
+import type { AccoutnType, OrderType } from "../Types/Types";
 import { NavBar } from "../components/NavBar";
 import { OrderItem } from "../components/OrderItem";
 
@@ -10,7 +10,7 @@ export const AccountPage = () => {
     const[ordersAccount, setOrdersAccount] = useState(Array<OrderType>);
 
     const GetAccountInfo = () => {
-        fetch("http://loaclhost:5000/get-account", {
+        fetch("http://localhost:5000/get-account", {
             method: "GET",
             headers: {
                 "Content-Type": "application-json"
@@ -22,7 +22,7 @@ export const AccountPage = () => {
     }
 
     const GetAccountOrdersHistory = () => {
-        fetch("http://loaclhost:5000/get-account-orders", {
+        fetch("http://localhost:5000/get-account-orders", {
             method: "GET",
             headers: {
                 "Content-Type": "application-json"

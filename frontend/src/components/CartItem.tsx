@@ -1,7 +1,7 @@
 import "../styles/cart-item.css"
 import { useState, useEffect } from "react"
 import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/quantityFunctionality"
-import type { ObjectType } from "../add-func/Types"
+import type { ObjectType } from "../Types/Types"
 
 interface IcartItem {
   cartItemData: ObjectType;

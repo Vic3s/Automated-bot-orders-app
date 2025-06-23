@@ -13,7 +13,8 @@ export const RegisterPage = () => {
 
     const navigate = useNavigate();
 
-    const PostRegisterData = () => {
+    const PostRegisterData = (e: any) => {
+        e.preventDefault();
 
         const UserRegisterObject = {
             username: username,
@@ -23,7 +24,7 @@ export const RegisterPage = () => {
             address: address
         }
 
-        fetch("http://localhsot:5000/post-register-data", {
+        fetch("http://localhost:5000/post-register-data", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -43,7 +44,7 @@ export const RegisterPage = () => {
                     <div className="register-heading-container">
                         <h1>Register</h1>
                     </div>
-                    <form className="register-form" onSubmit={PostRegisterData}>
+                    <form className="register-form" onSubmit={(e) => PostRegisterData(e)}>
                         <div className="form-left-side">
                             <div className="input-name input-container">
                                 <input type="text" name="user-name" placeholder="Name" onChange={(e) => SetUsername(e.target.value)}/>

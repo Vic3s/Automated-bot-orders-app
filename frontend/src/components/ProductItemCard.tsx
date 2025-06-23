@@ -2,7 +2,7 @@ import "../styles/product.css"
 import { useState, useEffect} from "react"
 import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/quantityFunctionality"
 import { CreateCartObject } from "../add-func/CartLocalStorage"
-import type { ObjectType } from "../add-func/Types";
+import type { ObjectType } from "../Types/Types";
 
 //ProductType interface
 interface IProductItem {

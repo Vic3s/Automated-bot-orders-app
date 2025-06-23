@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class MultipleProducts {
 
-    ArrayList<String> productIds;
+    ArrayList<Integer> productIds;
 
     public MultipleProducts(){}
 
-    public ArrayList<String> getProductIds(){
+    public ArrayList<Integer> getProductIds(){
         return productIds;
     }
-    public void setProductIds(ArrayList<String> productIds){
+    public void setProductIds(ArrayList<Integer> productIds){
         this.productIds = productIds;
     }
 }

@@ -1,20 +1,33 @@
-package com.server.backend.dto;
+package com.server.backend.models;
 
-public class RegisterData {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import org.springframework.stereotype.Component;
 
+@Entity
+@Component
+public class AccountModel {
+
+    @Id
+    int id;
     String username;
     String email;
     String password;
     String telephone;
     String address;
 
-    public RegisterData(){}
+    //Getter and Setter for id
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     //Getter and Setter for username
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -23,7 +36,6 @@ public class RegisterData {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -32,7 +44,6 @@ public class RegisterData {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -41,7 +52,6 @@ public class RegisterData {
     public String getTelephone() {
         return telephone;
     }
-
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
@@ -50,9 +60,7 @@ public class RegisterData {
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
 }
-

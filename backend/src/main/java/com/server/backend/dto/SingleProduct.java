@@ -2,14 +2,14 @@ package com.server.backend.dto;
 
 
 public class SingleProduct {
-    String id;
+    int id;
 
     public SingleProduct(){}
 
-    public String getId(){
+    public int getId(){
         return id;
     }
-    public void setId(String id){
+    public void setId(int id){
         this.id = id;
     }
 }

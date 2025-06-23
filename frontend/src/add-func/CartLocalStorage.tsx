@@ -1,4 +1,4 @@
-import type { OrederProductType } from "./Types";
+import type { OrederProductType } from "../Types/Types";
 
 export const getCartProductsObject = () => {
     const cartProducts = sessionStorage.getItem("cartProducts");

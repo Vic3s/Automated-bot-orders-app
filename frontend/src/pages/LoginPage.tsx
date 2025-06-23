@@ -10,22 +10,23 @@ export const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const PostLoginData = () => {
+    const PostLoginData = (e: any) => {
+        e.preventDefault();
 
         const UserRegisterObject = {
             email: email,
             password: password,
         }
 
-        fetch("http://localhsot:5000/post-login-data", {
+        fetch("http://localhost:5000/post-login-data", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify(UserRegisterObject)
         })
-        .then(response => { response.json(); navigate("/") })
-        .then(data => {console.log(data)})
+        .then(response => { response.json()})
+        .then(data => {console.log(data); navigate("/")})
         .catch(err => console.log(err))
     }
 
@@ -37,7 +38,7 @@ export const LoginPage = () => {
                     <div className="login-heading-container">
                         <h1>Log In</h1>
                     </div>
-                    <form className="login-form" onSubmit={PostLoginData}>
+                    <form className="login-form" onSubmit={(e) => PostLoginData(e)}>
                         <div className="input-email input-container">
                             <input type="email" name="user-email" placeholder="Email" 
                             onChange={(e) => setEmail(e.target.value)}/>
