@@ -34,11 +34,12 @@ export const NavBar = () => {
         fetch("http://localhost:5000/is-user-authenticated", {
             method: "GET",
             headers: {
-                "Conetent-Type": "application/json"
+                "Conetent-Type": "application/json",
+                "Authorization": document.cookie
             }
         })
         .then(response => { return response.json(); })
-        .then(data => setAccLogedIn(data.isUserLoged))
+        .then(data => setAccLogedIn(data.isUserLogged))
         .catch(err => console.log(err));
     }
 

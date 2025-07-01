@@ -21,7 +21,7 @@ public class ProductsService {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode result = mapper.createObjectNode();
 
-        int productID = productObject.getId();
+        long productID = productObject.getId();
 
         ProductModel productObj = repo.findById(productID)
                 .orElse(new ProductModel());
@@ -35,12 +35,12 @@ public class ProductsService {
     public ArrayList<ObjectNode> GetMultipleProducts(MultipleProducts productsObject){
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<ObjectNode> result = new ArrayList<>();
-        ArrayList<Integer> productIds  = productsObject.getProductIds();
+        ArrayList<Long> productIds  = productsObject.getProductIds();
 
         //Create database function to get multiple products
         // from the productIds list using for loop
 
-        for(int ID: productIds){
+        for(long ID: productIds){
             ObjectNode productObject = mapper.createObjectNode();
 
             //create request to get the current object in the loop

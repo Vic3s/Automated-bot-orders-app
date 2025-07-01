@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.server.backend.dto.MultipleProducts;
 import com.server.backend.dto.SingleProduct;
 import com.server.backend.services.ProductsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 @RestController
 public class ProductsController {
 
+    @Autowired
     private final ProductsService productsService;
 
     public ProductsController(ProductsService productsService) {

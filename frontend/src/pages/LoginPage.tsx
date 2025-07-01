@@ -5,7 +5,8 @@ import { NavBar } from "../components/NavBar";
 
 export const LoginPage = () => {
 
-    const[email, setEmail] = useState("");
+    // const[email, setEmail] = useState("");
+    const[username, setUsername] = useState("");
     const[password, setPassword] = useState("");
 
     const navigate = useNavigate();
@@ -14,8 +15,8 @@ export const LoginPage = () => {
         e.preventDefault();
 
         const UserRegisterObject = {
-            email: email,
-            password: password,
+            "username": username,
+            "password": password,
         }
 
         fetch("http://localhost:5000/post-login-data", {
@@ -25,8 +26,8 @@ export const LoginPage = () => {
             },
             body: JSON.stringify(UserRegisterObject)
         })
-        .then(response => { response.json()})
-        .then(data => {console.log(data); navigate("/")})
+        .then(response => { return response.json() })
+        .then(data => { document.cookie = `token=${data.token}`; navigate("/")})
         .catch(err => console.log(err))
     }
 
@@ -40,8 +41,10 @@ export const LoginPage = () => {
                     </div>
                     <form className="login-form" onSubmit={(e) => PostLoginData(e)}>
                         <div className="input-email input-container">
-                            <input type="email" name="user-email" placeholder="Email" 
-                            onChange={(e) => setEmail(e.target.value)}/>
+                            <input type="text" name="user-email" placeholder="Email" 
+                            onChange={(e) => setUsername(e.target.value)}/>
+
+                            {/* onChange={(e) => setEmail(e.target.value)}/> */}
                         </div>
                         <div className="input-password input-container">
                             <input type="password" name="user-password" placeholder="Password" 

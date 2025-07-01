@@ -12,7 +12,7 @@ export const OrderItem: React.FC<IOrderItem> = ({ orderData }) => {
             <div className="order-item-container">
                 <div className="order-item-left-side">
                     <div className="order-number-container">
-                        <h3>{orderData.number}</h3>
+                        <h3>{orderData.accountOrder}</h3>
                     </div>
                     <div className="bot-path-container">
                         <h3>{orderData.visitedLocations.join(" -> ")}</h3>

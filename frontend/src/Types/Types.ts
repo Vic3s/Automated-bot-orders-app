@@ -13,7 +13,7 @@ export type AccoutnType = {
 
 export type OrderType = {
         id: number,
-        number: number,
+        accountOrder: number,
         visitedLocations: Array<Array<number>>,
         products: Array<any>,
         total: number

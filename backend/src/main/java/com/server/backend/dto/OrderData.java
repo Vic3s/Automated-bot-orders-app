@@ -1,21 +1,22 @@
 package com.server.backend.dto;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.ArrayList;
 
 public class OrderData {
 
-    JsonNode products;
+    ArrayList<ObjectNode> products;
     int total;
 
     public OrderData (){}
 
     //Getter and Setter for products list
-    public JsonNode getProducts(){
+    public ArrayList<ObjectNode> getProducts(){
         return products;
     }
-    public void setProducts(JsonNode products){
+    public void setProducts(ArrayList<ObjectNode> products){
         this.products = products;
     }
 

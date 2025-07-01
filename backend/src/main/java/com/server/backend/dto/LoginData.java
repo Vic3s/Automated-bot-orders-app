@@ -2,18 +2,28 @@ package com.server.backend.dto;
 
 public class LoginData {
 
-    String email;
+//    String email;
+    String username;
     String password;
 
     public LoginData(){}
 
     //Getter and Setter for email
-    public String getEmail() {
-        return email;
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email){
+//        this.email = email;
+//    }
+
+    //Getter and Setter for username
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email){
-        this.email = email;
+    public void setUsername(String username){
+        this.username = username;
     }
 
     //Getter and Setter for password

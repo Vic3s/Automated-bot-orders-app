@@ -1,5 +1,6 @@
 package com.server.backend.services;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.server.backend.models.AccountModel;
@@ -8,22 +9,35 @@ import com.server.backend.dto.RegisterData;
 import com.server.backend.repo.AccountRepo;
 import com.server.backend.add_functionality.IDGenerate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AccountService {
 
+    private ObjectMapper mapper = new ObjectMapper();
+
+    @Autowired
+    JWTService jwtService;
+
     @Autowired
     AccountRepo repo;
 
+    @Autowired
+    AuthenticationManager authManager;
+
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+
     public ObjectNode GetAccount(){
-        ObjectMapper mapper = new ObjectMapper();
         ObjectNode result = mapper.createObjectNode();
 
         //get id from jwt logged account functionality
         // dummy id ||
         //          \/
-        int id = 13;
+        long id = 13;
         AccountModel acc = repo.findById(id).orElse(new AccountModel());
 
         // create a function to get the data from the
@@ -38,25 +52,21 @@ public class AccountService {
 
         return result;
     }
-    public ObjectNode PostLoginData(LoginData loginDataObject){
+    public ObjectNode VerifyLoginData(LoginData loginDataObject){
 
-        ObjectMapper mapper = new ObjectMapper();
         ObjectNode result = mapper.createObjectNode();
+        Authentication authentication =
+                authManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(loginDataObject.getUsername(), loginDataObject.getPassword()));
 
-        String email = loginDataObject.getEmail();
-        String password = loginDataObject.getPassword();
+        if(authentication.isAuthenticated()){
+            result.put("token", jwtService.GenerateJWT(loginDataObject.getUsername()));
+            return result;
+        }
 
-        //create jwt function to generate token and store it in cookie storage
-
-        //After authentication setup add a check if login is successful
-        // and return response accordingly
-
-        result.put("message", "login successful");
-
-        return result;
+        return result.put("Message", "Login Information Incorrect");
     }
     public ObjectNode PostRegisterData(RegisterData registerDataObject){
-        ObjectMapper mapper = new ObjectMapper();
         ObjectNode result = mapper.createObjectNode();
 
         String username = registerDataObject.getUsername();
@@ -65,30 +75,32 @@ public class AccountService {
         String telephone = registerDataObject.getTelephone();
         String address = registerDataObject.getAddress();
 
-        int id = IDGenerate.idGenerate(username, email);
+        AccountModel account = new AccountModel();
 
-        AccountModel accountObj = new AccountModel();
+        account.setId(IDGenerate.idGenerate());
+        account.setUsername(username);
+        account.setEmail(email);
+        account.setPassword(passwordEncoder.encode(password));
+        account.setTelephone(telephone);
+        account.setAddress(address);
 
-        accountObj.setId(id);
-        accountObj.setUsername(username);
-        accountObj.setEmail(email);
-        // hash password before saving !!!
-        accountObj.setPassword(password);
-        accountObj.setTelephone(telephone);
-        accountObj.setAddress(address);
+        repo.save(account);
 
-        repo.save(accountObj);
-
-        result.put("message", "registered successfully");
+        result.put("message", "account created successfully");
 
         return result;
     }
-    public ObjectNode IsUserAuthenticated(){
-        ObjectMapper mapper = new ObjectMapper();
+    public ObjectNode IsUserAuthenticated(String authorization){
         ObjectNode result = mapper.createObjectNode();
 
-        //create function to check if a user is logged in and authenticated
-        // then fill the object with true or false depending on the result
+        String username = jwtService.extractUsername(authorization);
+
+        if(repo.findByUsername(username) != null){
+            result.put("isUserLogged", true);
+            return result;
+        }
+
+        result.put("isUserLogged", false);
 
         return result;
     }

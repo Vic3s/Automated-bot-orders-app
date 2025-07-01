@@ -1,26 +1,29 @@
 package com.server.backend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
-@Entity
+import java.util.ArrayList;
+
+@Document(collection = "products")
 @Component
 public class ProductModel {
 
     @Id
-    int id;
+    long id;
     String name;
     int price;
     int quantity;
+    ArrayList<Integer> location;
 
     public ProductModel(){}
 
     //Getter and Setter for id
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -46,5 +49,13 @@ public class ProductModel {
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    //Getter and Setter for quantity
+    public ArrayList<Integer> getLocation() {
+        return location;
+    }
+    public void setLocation(ArrayList<Integer> location) {
+        this.location = location;
     }
 }

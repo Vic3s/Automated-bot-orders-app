@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.server.backend.dto.OrderData;
 import com.server.backend.services.OrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,8 @@ import java.util.ArrayList;
 @RestController
 public class OrdersController {
 
-    public final OrdersService ordersService;
+    @Autowired
+    private final OrdersService ordersService;
 
     public OrdersController(OrdersService ordersService){
         this.ordersService = ordersService;

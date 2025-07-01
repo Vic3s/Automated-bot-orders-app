@@ -1,15 +1,15 @@
 package com.server.backend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
-@Entity
+@Document(collection = "accounts")
 @Component
 public class AccountModel {
 
     @Id
-    int id;
+    long id;
     String username;
     String email;
     String password;
@@ -17,10 +17,10 @@ public class AccountModel {
     String address;
 
     //Getter and Setter for id
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
