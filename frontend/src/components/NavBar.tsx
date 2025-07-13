@@ -1,13 +1,24 @@
 import { useState, useEffect } from "react"
 
+import { setAuthRequestHeaders, IsUserAuthorized } from "../add-func/IsUserAutorized";
+
 import "../styles/nav-additional-styling.css"
 
 export const NavBar = () => {
 
-    const[accLogedIn, setAccLogedIn] = useState(false);
+    const[accLoggedIn, setAccLoggedIn] = useState(false);
+
+    const token = getCookie("token")
+
+    function getCookie(name: string) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+    }
 
     const LoginConditionalRender = () =>{
-        if(accLogedIn){
+        if(accLoggedIn){
             return (
                 <>
                     <li className="nav-item me-3 me-lg-0">
@@ -17,34 +28,22 @@ export const NavBar = () => {
                     </li>
                 </>
             )
-        }else{
-            return(
-                <>
-                    <li className="nav-item me-3 me-lg-0">
-                    <a className="nav-link" href="/login">
-                        Log in
-                    </a>
-                    </li>
-                </>
-            )
         }
+        return(
+            <>
+                <li className="nav-item me-3 me-lg-0">
+                <a className="nav-link" href="/login">
+                    Log in
+                </a>
+                </li>
+            </>
+        )
     }
-
-    const UserExistsCheck = () => {
-        fetch("http://localhost:5000/is-user-authenticated", {
-            method: "GET",
-            headers: {
-                "Conetent-Type": "application/json",
-                "Authorization": document.cookie
-            }
-        })
-        .then(response => { return response.json(); })
-        .then(data => setAccLogedIn(data.isUserLogged))
-        .catch(err => console.log(err));
-    }
-
+    
     useEffect(() => {
-        UserExistsCheck();
+        IsUserAuthorized(setAuthRequestHeaders(token)).then((isAuthorized: boolean) => {
+            setAccLoggedIn(isAuthorized);
+        }); 
     })
 
     return (

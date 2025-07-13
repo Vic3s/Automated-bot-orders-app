@@ -101,7 +101,6 @@ public class AccountService {
         }
 
         result.put("isUserLogged", false);
-
         return result;
     }
 }
