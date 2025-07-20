@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.util.ArrayList;
 
 @RestController
@@ -30,6 +29,7 @@ public class ProductsController {
     public ResponseEntity<ObjectNode> GetProductSingle(@RequestBody SingleProduct body){
         ObjectNode response = productsService.GetSingleProduct(body);
 
+        System.out.println(response);
         return ResponseEntity.ok(response);
     }
 
@@ -41,14 +41,8 @@ public class ProductsController {
     }
 
     @GetMapping("/get-product-all")
-    public ResponseEntity<ObjectNode> GetProductAll(){
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectNode response = mapper.createObjectNode();
-
-        //Create database function to get all products
-
-        //dummy data to test front to back end communication
-        response.put("Message", "Request received");
+    public ResponseEntity<ArrayList> GetProductAll(){
+        ArrayList<ObjectNode> response = productsService.GetAllProducts();
 
         return ResponseEntity.ok(response);
     }

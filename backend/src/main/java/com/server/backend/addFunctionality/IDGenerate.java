@@ -1,9 +1,4 @@
-package com.server.backend.add_functionality;
-
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.Duration;
+package com.server.backend.addFunctionality;
 
 public class IDGenerate {
 

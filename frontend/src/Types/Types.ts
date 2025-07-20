@@ -23,4 +23,11 @@ export type OrederProductType = {
         name: string,
         price: number,
         quantity: number
-}     
+}
+
+export type CartObjectType = {
+        [productId: string]: {
+                price: number,
+                quantity: number
+        }
+}

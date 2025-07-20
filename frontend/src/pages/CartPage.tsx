@@ -2,7 +2,7 @@ import "../styles/cart-page.css"
 import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar";
 import { CartItem } from "../components/CartItem";
-import { DeleteCartObject, getCartProductsObject, getTotalPrice} from "../add-func/CartLocalStorage";
+import { DeleteCartObject, GetCartProductsObject, getTotalPrice} from "../add-func/CartLocalStorage";
 
 
 export const CartPage = () => {
@@ -48,7 +48,7 @@ export const CartPage = () => {
     const SendOrder = () => {
 
         const orderObject: Object = {
-            products: getCartProductsObject(),
+            products: GetCartProductsObject(),
             total: getTotalPrice()
         }
 

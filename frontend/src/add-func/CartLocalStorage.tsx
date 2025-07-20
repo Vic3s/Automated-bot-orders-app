@@ -1,18 +1,17 @@
-import type { OrederProductType } from "../Types/Types";
+import type { OrederProductType, CartObjectType} from "../Types/Types";
 
-export const getCartProductsObject = () => {
-    const cartProducts = sessionStorage.getItem("cartProducts");
+export const GetCartProductsObject = () => {
+    const cartProducts = localStorage.getItem("cartProducts");
 
     if(cartProducts !== null){
-        const cartObject = JSON.parse(cartProducts)
-        return cartObject
+        return JSON.parse(cartProducts)
     }else{
         return {}
     }   
 }
 
 export const getTotalPrice = () => {
-    const cartProducts = sessionStorage.getItem("cartProducts");
+    const cartProducts = localStorage.getItem("cartProducts");
 
     if(cartProducts !== null){
         const cartObject = JSON.parse(cartProducts)
@@ -28,31 +27,37 @@ export const getTotalPrice = () => {
 }
 
 export const CreateCartObject = (productData: OrederProductType) => {
-    const cartProducts = sessionStorage.getItem("cartProducts");
+    const cartProducts = localStorage.getItem("cartProducts");
 
     if(cartProducts !== null){
-        const cartObject = {
+        //if cart object exitsts fill the object with new values  
+        FillCartObject(productData, Object(JSON.parse(cartProducts)));
+    }else{
+        // create the cartProducts Object with an initial value
+        localStorage.setItem("cartProducts", JSON.stringify({
             [productData.id]: {
-
                 price: productData.price,
                 quantity: 1,
-                
             }
-        }
-        sessionStorage.setItem("cartObject", JSON.stringify(cartObject))
+        }))
+    }
+}
+
+export const DeleteCartObject = () => {
+    const cartProducts = localStorage.getItem("cartProducts");
+    if(cartProducts !== null){
+        localStorage.removeItem("cartProducts")
     }else{
-        return ;
+        console.log("Cart Is Empty!");
     }
 
 }
 
-export const DeleteCartObject = () => {
-    const cartProducts = sessionStorage.getItem("cartProducts");
-
-    if(cartProducts !== null){
-        sessionStorage.removeItem("cartObject")
-    }else{
-        console.log("No Cart Object Exists!");
+export const FillCartObject = (productData: OrederProductType, cartProductsObject: CartObjectType) => {
+    const productId = productData.id.toString();
+    cartProductsObject[productId] = {
+        price: productData.price,
+        quantity: 1,
     }
-
+    localStorage.setItem("cartProducts", JSON.stringify(cartProductsObject));
 }

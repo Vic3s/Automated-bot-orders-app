@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductsService {
@@ -17,17 +18,19 @@ public class ProductsService {
     @Autowired
     ProductRepo repo;
 
-    public ObjectNode GetSingleProduct(SingleProduct productObject){
+    public ObjectNode GetSingleProduct(SingleProduct productReqBody){
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode result = mapper.createObjectNode();
 
-        long productID = productObject.getId();
+        String productID = productReqBody.getId();
 
         ProductModel productObj = repo.findById(productID)
                 .orElse(new ProductModel());
 
-        //Create database function to get single product
-        // and fill response with data
+        result.put("id", productObj.getId())
+                .put("name", productObj.getName())
+                .put("price", productObj.getPrice())
+                .put("quantity", productObj.getQuantity());
 
         return result;
     }
@@ -55,17 +58,19 @@ public class ProductsService {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<ObjectNode> result = new ArrayList<>();
 
-        //Create database function to get multiple products
-        //from the productIds list using for loop
+        // get all products from database
+        List<ProductModel> allProducts = repo.findAll();
 
-//        Get all the products from db and fill them to an object or json node
-//        for(){
-//            ObjectNode productObject = mapper.createObjectNode();
-//
-//            //create request to get the current object in the loop
-//            //then request it from db
-//            // then add that object to the array
-//        }
+        // add them to the result object node ArrayList and return it
+        for(ProductModel product : allProducts){
+            ObjectNode productObj = mapper.createObjectNode();
+            System.out.println(product.getQuantity());
+            productObj.put("id", product.getId())
+                    .put("name", product.getName())
+                    .put("price", product.getPrice())
+                    .put("quantity", product.getQuantity());
+            result.add(productObj);
+        }
 
         return result;
     }

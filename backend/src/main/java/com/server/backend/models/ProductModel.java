@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ProductModel {
 
     @Id
-    long id;
+    String id;
     String name;
     int price;
     int quantity;
@@ -20,10 +20,10 @@ public class ProductModel {
     public ProductModel(){}
 
     //Getter and Setter for id
-    public long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

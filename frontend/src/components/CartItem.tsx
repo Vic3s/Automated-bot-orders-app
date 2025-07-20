@@ -36,7 +36,7 @@ export const CartItem: React.FC<IcartItem> = ({cartItemData}) => {
                 <div className="quantity-price-cart-container">
                     <div className="buttons-quantity-select-container">
                         <button className="minus" onClick={(e) => DecreaseQuantity(cartItemData.id.toString())}>-</button>
-                        <div className="quantity">{QuantitySelectFunctionality(cartItemData)}</div>
+                        <div className="quantity">{QuantitySelectFunctionality(cartItemData.id.toString())}</div>
                         <button className="plus" onClick={(e) => IncreaseQuantity(cartItemData.id.toString())}>+</button>
                     </div>
                     <div className="price-cart-container">

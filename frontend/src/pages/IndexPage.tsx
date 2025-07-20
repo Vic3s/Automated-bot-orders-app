@@ -21,6 +21,7 @@ export const IndexPage = () => {
     .then(data => setPorducts(data))
     .catch(err => console.log(err));
   }
+
   useEffect(() => {
     GetProducts();
   }, [])
@@ -31,11 +32,11 @@ export const IndexPage = () => {
         <NavBar />
 
         <div className="product-contents">
-          {/* {products.map((product: ObjectType) => {
+          {products.map((product: ObjectType) => {
             return <>
-              <ProductItemCard productData={product}/>
+              {product.name && <ProductItemCard productData={product}/> }
             </>
-          })} */}
+          })}
         </div>
 
         <Footer />

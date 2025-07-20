@@ -1,4 +1,4 @@
-package com.server.backend.add_functionality;
+package com.server.backend.addFunctionality;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 

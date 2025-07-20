@@ -1,13 +1,12 @@
 package com.server.backend.services;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.server.backend.models.AccountModel;
 import com.server.backend.dto.LoginData;
 import com.server.backend.dto.RegisterData;
 import com.server.backend.repo.AccountRepo;
-import com.server.backend.add_functionality.IDGenerate;
+import com.server.backend.addFunctionality.IDGenerate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,6 +37,7 @@ public class AccountService {
         // dummy id ||
         //          \/
         long id = 13;
+//        jwtService.extractUsername();
         AccountModel acc = repo.findById(id).orElse(new AccountModel());
 
         // create a function to get the data from the
