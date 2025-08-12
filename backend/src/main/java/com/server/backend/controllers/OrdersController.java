@@ -7,10 +7,7 @@ import com.server.backend.dto.OrderData;
 import com.server.backend.services.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -25,8 +22,10 @@ public class OrdersController {
     }
 
     @PostMapping("/post-order")
-    public ResponseEntity<ObjectNode> PostOrder(@RequestBody OrderData body){
-        ObjectNode response = ordersService.PostOrder(body);
+    public ResponseEntity<ObjectNode> PostOrder(@RequestBody OrderData body,
+        @RequestHeader("Authorization") String authorizationHeader){
+
+        ObjectNode response = ordersService.PostOrder(body, authorizationHeader);
 
         return ResponseEntity.ok(response);
     }

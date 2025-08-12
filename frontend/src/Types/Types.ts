@@ -3,10 +3,11 @@ export type ObjectType = {
         name: string,
         price: number,
         quantity: number,
+        location: Array<number>
 }
 
 export type AccoutnType = {
-        name: string,
+        username: string,
         email: string,
         address: string
 }
@@ -22,7 +23,8 @@ export type OrederProductType = {
         id: number,
         name: string,
         price: number,
-        quantity: number
+        quantity: number,
+        location: Array<number>
 }
 
 export type CartObjectType = {

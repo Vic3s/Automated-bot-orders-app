@@ -1,6 +1,6 @@
 import "../styles/product.css"
 import { useState, useEffect} from "react"
-import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/quantityFunctionality"
+import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/QuantityFunctionality"
 import { CreateCartObject, GetCartProductsObject } from "../add-func/CartLocalStorage"
 import type { ObjectType } from "../Types/Types";
 import "../styles/product.css"
@@ -21,7 +21,6 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const ChangeButtonStyle = () => {
-
         CreateCartObject(productData);
         setQuantityStyling(true);
     }
@@ -62,10 +61,10 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
                     </div>
                     {quantityStyling ?
                     <div className="buttons-quantity-select-container">
-                        <button className="minus" onClick={() => {DecreaseQuantity(productData); 
+                        <button className="minus btn-primary" onClick={() => {DecreaseQuantity(productData); 
                             setQuantityProduct(prev => prev = QuantitySelectFunctionality(productData.id.toString()))}}>-</button>
                         <div className="quantity">{quantityProduct}</div>
-                        <button className="plus" onClick={() => {IncreaseQuantity(productData);
+                        <button className="plus btn-primary" onClick={() => {IncreaseQuantity(productData);
                             setQuantityProduct(prev => prev = QuantitySelectFunctionality(productData.id.toString()))
                         }}>+</button>
                     </div>

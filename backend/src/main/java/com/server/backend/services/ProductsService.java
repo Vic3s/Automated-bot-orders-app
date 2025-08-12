@@ -38,17 +38,20 @@ public class ProductsService {
     public ArrayList<ObjectNode> GetMultipleProducts(MultipleProducts productsObject){
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<ObjectNode> result = new ArrayList<>();
-        ArrayList<Long> productIds  = productsObject.getProductIds();
+        ArrayList<String> productIds = productsObject.getProductIds();
 
-        //Create database function to get multiple products
-        // from the productIds list using for loop
-
-        for(long ID: productIds){
+        for(String ID: productIds){
             ObjectNode productObject = mapper.createObjectNode();
 
-            //create request to get the current object in the loop
-            //then request it from db
-            // then add that object to the array
+            ProductModel productData = repo.findById(ID).orElse(new ProductModel());
+
+            productObject.put("id", ID)
+            .put("name", productData.getName())
+            .put("price", productData.getPrice())
+            .put("quantity", productData.getQuantity())
+            .put("location", productData.getLocation());
+
+            result.add(productObject);
         }
 
         return result;
@@ -64,11 +67,11 @@ public class ProductsService {
         // add them to the result object node ArrayList and return it
         for(ProductModel product : allProducts){
             ObjectNode productObj = mapper.createObjectNode();
-            System.out.println(product.getQuantity());
             productObj.put("id", product.getId())
                     .put("name", product.getName())
                     .put("price", product.getPrice())
-                    .put("quantity", product.getQuantity());
+                    .put("quantity", product.getQuantity())
+                    .put("location", product.getLocation());
             result.add(productObj);
         }
 

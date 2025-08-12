@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import { setAuthRequestHeaders, IsUserAuthorized } from "../add-func/IsUserAutorized";
+import {GetCookie, SetAuthRequestHeaders, IsUserAuthorized } from "../add-func/UserAutorization";
 
 import "../styles/nav-additional-styling.css"
 
@@ -8,14 +8,7 @@ export const NavBar = () => {
 
     const[accLoggedIn, setAccLoggedIn] = useState(false);
 
-    const token = getCookie("token")
-
-    function getCookie(name: string) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        
-        if (parts.length === 2) return parts.pop()?.split(';').shift();
-    }
+    const token = GetCookie("token")
 
     const LoginConditionalRender = () =>{
         if(accLoggedIn){
@@ -41,7 +34,7 @@ export const NavBar = () => {
     }
     
     useEffect(() => {
-        IsUserAuthorized(setAuthRequestHeaders(token)).then((isAuthorized: boolean) => {
+        IsUserAuthorized(SetAuthRequestHeaders("GET", {}, token)).then((isAuthorized: boolean) => {
             setAccLoggedIn(isAuthorized);
         }); 
     })
@@ -50,7 +43,7 @@ export const NavBar = () => {
         <>
         <nav className="navbar navbar-expand-lg navbar-light mask-custom shadow-0">
         <div className="container">
-            <a className="navbar-brand fw-bold"  style={{"color": "#5e9693"}} href="">Shopify</a>
+            <a className="navbar-brand fw-bold"  style={{"color": "#5e9693"}} href="">ShopUp</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">

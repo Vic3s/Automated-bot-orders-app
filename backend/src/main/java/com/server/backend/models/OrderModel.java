@@ -1,6 +1,8 @@
 package com.server.backend.models;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.server.backend.dto.OrderProduct;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +12,11 @@ import java.util.ArrayList;
 @Component
 public class OrderModel {
 
-    long id;
-    int accountOrder;
-    ArrayList<ArrayList<Integer>> visitedLocations;
-    ArrayList<ObjectNode> products;
-    int total;
+    private long id;
+    private String accountOrder;
+    private ArrayList<ArrayList<Integer>> visitedLocations;
+    private ArrayList<OrderProduct> products;
+    private double total;
 
     //Getter and Setter for id
     public long getId() {
@@ -25,10 +27,10 @@ public class OrderModel {
     }
 
     //Getter and Setter for orderedBy
-    public int getAccountOrder() {
+    public String getAccountOrder() {
         return accountOrder;
     }
-    public void setAccountOrder(int accountOrder) {
+    public void setAccountOrder(String accountOrder) {
         this.accountOrder = accountOrder;
     }
 
@@ -41,18 +43,18 @@ public class OrderModel {
     }
 
     //Getter and setter for products
-    public ArrayList<ObjectNode> getProducts() {
+    public ArrayList<OrderProduct> getProducts() {
         return products;
     }
-    public void setProducts(ArrayList<ObjectNode> products) {
+    public void setProducts(ArrayList<OrderProduct> products) {
         this.products = products;
     }
 
     //Getter and Setter for total
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 }

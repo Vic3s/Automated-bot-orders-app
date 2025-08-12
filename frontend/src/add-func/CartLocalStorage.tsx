@@ -17,7 +17,7 @@ export const getTotalPrice = () => {
         const cartObject = JSON.parse(cartProducts)
         let total = 0;
         for(let key of Object.keys(cartObject)){
-            let price = cartObject[key].price;
+            let price = cartObject[key].price * cartObject[key].quantity;
             total += price;
         }
         return total;
@@ -38,6 +38,7 @@ export const CreateCartObject = (productData: OrederProductType) => {
             [productData.id]: {
                 price: productData.price,
                 quantity: 1,
+                location: productData.location
             }
         }))
     }
@@ -60,4 +61,21 @@ export const FillCartObject = (productData: OrederProductType, cartProductsObjec
         quantity: 1,
     }
     localStorage.setItem("cartProducts", JSON.stringify(cartProductsObject));
+}
+
+
+export const getCartItems = () => {
+    const cartProducts = localStorage.getItem("cartProducts");
+
+    if(cartProducts !== null){
+
+        const cartObject = JSON.parse(cartProducts);
+
+        const items: string[] = Object.keys(cartObject);
+        const quantities: number[] = Object.values(cartObject);
+
+        return {0: items, 1: quantities } 
+    }else{
+        return {'error': 'Something went wrong.'};
+    }        
 }

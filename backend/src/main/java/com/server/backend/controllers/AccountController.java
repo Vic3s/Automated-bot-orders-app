@@ -23,8 +23,10 @@ public class AccountController {
     }
 
     @GetMapping("/get-account")
-    public ResponseEntity<ObjectNode> GetAccount(){
-        ObjectNode response = accountService.GetAccount();
+    public ResponseEntity<ObjectNode> GetAccount(@RequestHeader("Authorization") String authorizationHeader){
+        System.out.println(authorizationHeader);
+        ObjectNode response = accountService.GetAccount(authorizationHeader);
+
 
         return ResponseEntity.ok(response);
     }

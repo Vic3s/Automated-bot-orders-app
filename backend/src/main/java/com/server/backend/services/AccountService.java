@@ -30,18 +30,11 @@ public class AccountService {
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
 
-    public ObjectNode GetAccount(){
+    public ObjectNode GetAccount(String authorization){
         ObjectNode result = mapper.createObjectNode();
 
-        //get id from jwt logged account functionality
-        // dummy id ||
-        //          \/
-        long id = 13;
-//        jwtService.extractUsername();
-        AccountModel acc = repo.findById(id).orElse(new AccountModel());
-
-        // create a function to get the data from the
-        // currently logged in account and fill object with data
+        String userLoggedName = jwtService.extractUsername(authorization);
+        AccountModel acc = repo.findByUsername(userLoggedName);
 
         result.put("id", acc.getId());
         result.put("username", acc.getUsername());

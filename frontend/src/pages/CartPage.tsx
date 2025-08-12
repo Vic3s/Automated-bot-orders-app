@@ -2,28 +2,21 @@ import "../styles/cart-page.css"
 import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar";
 import { CartItem } from "../components/CartItem";
-import { DeleteCartObject, GetCartProductsObject, getTotalPrice} from "../add-func/CartLocalStorage";
+import { DeleteCartObject, getTotalPrice} from "../add-func/CartLocalStorage";
+import { getCartItems } from "../add-func/CartLocalStorage";
+import { GetCookie, SetAuthRequestHeaders } from "../add-func/UserAutorization";
+import type { ObjectType } from "../Types/Types";
+import { useNavigate } from "react-router";
 
 
 export const CartPage = () => {
 
+    const navigate = useNavigate();
+
     const[cartItems, setCartItems] = useState([]);
     const[total, setTotal] = useState(0);
 
-    const getCartItems = () => {
-        const cartProducts = sessionStorage.getItem("cartProducts");
-
-        if(cartProducts !== null){
-            const cartObject = JSON.parse(cartProducts)
-
-            const items: string[] = Object.keys(cartObject);
-            const quantities: number[] = Object.values(cartObject);
-
-            return {0: items, 1: quantities}
-        }else{
-            return {};
-        }        
-    }
+    const token = GetCookie("token");
 
     const GetCartItemsInfo = () => {
 
@@ -38,28 +31,27 @@ export const CartPage = () => {
                 productIds: getCartItems()[0]
             })
         })
-        .then(response => response.json())
+        .then(response => { return response.json() })
         .then(data => setCartItems(data))
     }
     useEffect(() => {
         GetCartItemsInfo()
     }, [])
 
-    const SendOrder = () => {
+    const SendOrder = (e: any) => {
+        e.preventDefault();
 
         const orderObject: Object = {
-            products: GetCartProductsObject(),
+            products: cartItems,
             total: getTotalPrice()
         }
 
-        fetch("http://localhost:5000/post-order", {
-            method: 'POST',
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            credentials: "include",
-            body: JSON.stringify(orderObject)
-        })
+        fetch("http://localhost:5000/post-order", 
+            SetAuthRequestHeaders("POST", orderObject, token))
+        .then(response => { return response.json() } )
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+
         DeleteCartObject();
     }
 
@@ -82,9 +74,9 @@ export const CartPage = () => {
                             </div>
                         </div>
                         <div className="products-cart-container">
-                            {cartItems.map((cartItem) => {
+                            {cartItems.map((cartItem: ObjectType) => {
                                 return <>
-                                <CartItem cartItemData={cartItem}/>
+                                <CartItem key={cartItem.id} cartItemData={cartItem} onStateChange={() => {setTotal(getTotalPrice())}}/>
                                 </>
                             })}
                         </div>
@@ -95,7 +87,7 @@ export const CartPage = () => {
                             <span>Total:</span>
                             <h3>{total}</h3>
                         </div>
-                        <button className="send-order-btn" onClick={SendOrder}>Order</button>
+                        <button className="send-order-btn btn-primary" onClick={(e) => {SendOrder(e); navigate("/")}}>Order</button>
                     </div>
                 </div>
             </div>

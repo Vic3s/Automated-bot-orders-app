@@ -1,63 +1,59 @@
-package com.server.backend.models;
+package com.server.backend.dto;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Document(collection = "products")
-@Component
-public class ProductModel {
+public class OrderProduct {
 
-    @Id
     private String id;
     private String name;
-    private int price;
+    private double price;
     private int quantity;
     private ArrayList<Integer> location;
 
-    public ProductModel(){}
 
-    //Getter and Setter for id
+    // Getter and Setter for ID
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
 
-    //Getter and Setter for name
+    // Getter and Setter for Name
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    //Getter and Setter for price
-    public int getPrice() {
+    // Getter and Setter for Price
+    public double getPrice() {
         return price;
     }
-    public void setPrice(int price) {
+
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    //Getter and Setter for quantity
+    // Getter and Setter for Quantity
     public int getQuantity() {
         return quantity;
     }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    //Getter and Setter for quantity
-    public JsonNode getLocation() {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.valueToTree(location);
+    public ArrayList<Integer> getLocation() {
+        return location;
     }
+
     public void setLocation(ArrayList<Integer> location) {
         this.location = location;
     }

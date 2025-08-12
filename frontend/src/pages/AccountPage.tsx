@@ -3,19 +3,21 @@ import { useState, useEffect } from "react"
 import type { AccoutnType, OrderType } from "../Types/Types";
 import { NavBar } from "../components/NavBar";
 import { OrderItem } from "../components/OrderItem";
+import { GetCookie, DeleteCookie, SetAuthRequestHeaders } from "../add-func/UserAutorization";
+import { useNavigate } from "react-router";
 
 export const AccountPage = () => {
+
+    const navigate = useNavigate();
 
     const[accountInfo, setAccountInfo] = useState<AccoutnType>(Object);
     const[ordersAccount, setOrdersAccount] = useState(Array<OrderType>);
 
     const GetAccountInfo = () => {
-        fetch("http://localhost:5000/get-account", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application-json"
-            }
-        })
+
+        const token = GetCookie("token");
+
+        fetch("http://localhost:5000/get-account", SetAuthRequestHeaders("GET", {}, token))
         .then(response => { return response.json() })
         .then(data => setAccountInfo(data))
         .catch(err => console.log(err));
@@ -33,8 +35,14 @@ export const AccountPage = () => {
         .catch(err => console.log(err));
     }
 
+    const LogOut = () => {
+        DeleteCookie("token");
+        navigate("/");
+    }
+
     useEffect(() => {
-        GetAccountInfo();
+        
+        GetAccountInfo()
         GetAccountOrdersHistory();
     }, [])
     
@@ -43,8 +51,9 @@ export const AccountPage = () => {
             <NavBar />
             <div className="account-main-container">
                 <div className="account-name-email-container">
-                    <h2 className="account-name">{accountInfo.name}</h2>
+                    <h2 className="account-name">{accountInfo.username}</h2>
                     <h2 className="account-email">{accountInfo.email}</h2>
+                    <button className="btn btn-primary w-25" onClick={LogOut}>Log Out</button>
                 </div>
                 <div className="account-address">
                     <h2>{accountInfo.address}</h2>
