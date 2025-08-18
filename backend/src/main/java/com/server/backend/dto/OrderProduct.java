@@ -12,6 +12,7 @@ public class OrderProduct {
     private double price;
     private int quantity;
     private ArrayList<Integer> location;
+    private int availableQuantity;
 
 
     // Getter and Setter for ID
@@ -56,5 +57,13 @@ public class OrderProduct {
 
     public void setLocation(ArrayList<Integer> location) {
         this.location = location;
+    }
+
+    public int getAvailableQuantity() {
+        return availableQuantity;
+    }
+
+    public void setAvailableQuantity(int availableQuantity) {
+        this.availableQuantity = availableQuantity;
     }
 }

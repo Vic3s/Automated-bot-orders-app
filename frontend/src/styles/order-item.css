@@ -21,30 +21,26 @@
   font-size: 25px;
 }
 .order-item-container .order-item-right-side {
-  width: 23%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
 }
 .order-item-container .order-item-right-side .products-list-order-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 .order-item-container .order-item-right-side .products-list-order-container .product-item-container {
-  width: 80%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-}
-.order-item-container .order-item-right-side .products-list-order-container .product-item-container h3 {
-  font-size: 25px;
-}
-.order-item-container .order-item-right-side .products-list-order-container .product-item-container .product-name-order {
-  font-weight: bold;
+  justify-content: space-between;
+  width: 100%;
+  flex-shrink: 0;
 }
 .order-item-container .order-item-right-side .total-price-order-container {
   width: 20%;
@@ -52,7 +48,7 @@
   align-items: center;
   justify-content: center;
 }
-.order-item-container .order-item-right-side .total-price-order-container h2 {
+.order-item-container .order-item-right-side .total-price-order-container h3 {
   font-weight: bold;
 }
 

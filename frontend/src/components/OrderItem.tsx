@@ -15,7 +15,7 @@ export const OrderItem: React.FC<IOrderItem> = ({ orderData }) => {
                         <h4>{orderData.orderNumber}</h4>
                     </div>
                     <div className="bot-path-container">
-                        <h3>{orderData.visitedLocations.join(" -> ")}</h3>
+                        <h5>{orderData.visitedLocations.join(" -> ")}</h5>
                     </div>
                 </div>
                 <div className="order-item-right-side">
@@ -23,14 +23,14 @@ export const OrderItem: React.FC<IOrderItem> = ({ orderData }) => {
                         {orderData.products.map((product: OrderProductType) => {
                             return (
                                 <div className="product-item-container">
-                                    <h3 className="product-name-order">{product.name}:</h3>
-                                    <h3 className="product-price-order">{product.price}€</h3>
+                                    <h5 className="product-name-order fw-bold">{product.name}({product.price}€ x{product.quantity}):</h5>
+                                    <h5 className="product-price-order">{product.price * product.quantity}€</h5>
                                 </div>
                             )
                         })}
                     </div>
                     <div className="total-price-order-container">
-                        <h2>{orderData.total}€</h2>
+                        <h3>{orderData.total}€</h3>
                     </div>
                 </div>
             </div>

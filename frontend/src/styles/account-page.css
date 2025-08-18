@@ -40,7 +40,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 20px;
+  padding: 0px 33px;
 }
 .account-main-container .account-orders-container .orders-general-meta h3 {
   font-size: 25px;
@@ -54,6 +54,7 @@
   gap: 50px;
 }
 .account-main-container .account-orders-container .orders-general-meta .general-meta-right-side {
+  width: 33%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
