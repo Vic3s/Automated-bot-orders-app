@@ -1,4 +1,4 @@
-import type { OrederProductType, CartObjectType} from "../Types/Types";
+import type { ProductType, CartObjectType, OrderProductType, CartItemQuantityNPrice} from "../Types/Types";
 
 export const GetCartProductsObject = () => {
     const cartProducts = localStorage.getItem("cartProducts");
@@ -26,7 +26,7 @@ export const getTotalPrice = () => {
     }   
 }
 
-export const CreateCartObject = (productData: OrederProductType) => {
+export const CreateCartObject = (productData: ProductType) => {
     const cartProducts = localStorage.getItem("cartProducts");
 
     if(cartProducts !== null){
@@ -54,15 +54,18 @@ export const DeleteCartObject = () => {
 
 }
 
-export const FillCartObject = (productData: OrederProductType, cartProductsObject: CartObjectType) => {
-    const productId = productData.id.toString();
-    cartProductsObject[productId] = {
+export const FillCartObject = (productData: ProductType, cartProductsObject: CartObjectType) => {
+    cartProductsObject[productData.id.toString()] = {
         price: productData.price,
         quantity: 1,
     }
     localStorage.setItem("cartProducts", JSON.stringify(cartProductsObject));
 }
 
+export const DeleteCartObjectItem = (productId: string, cartProductsObject: CartObjectType) => {
+    delete cartProductsObject[productId];
+    localStorage.setItem("cartProducts", JSON.stringify(cartProductsObject));
+}
 
 export const getCartItems = () => {
     const cartProducts = localStorage.getItem("cartProducts");
@@ -72,10 +75,11 @@ export const getCartItems = () => {
         const cartObject = JSON.parse(cartProducts);
 
         const items: string[] = Object.keys(cartObject);
-        const quantities: number[] = Object.values(cartObject);
+        const quantities: CartItemQuantityNPrice[] = Object.values(cartObject);
 
         return {0: items, 1: quantities } 
     }else{
-        return {'error': 'Something went wrong.'};
+        console.log("error: something went wrong")
+        return {0: [], 1: [] };
     }        
 }

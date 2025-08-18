@@ -1,9 +1,25 @@
-export type ObjectType = {
+export type ProductType = {
         id: number,
         name: string,
         price: number,
         quantity: number,
         location: Array<number>
+}
+
+export type CartItemType = {
+        id: number,
+        name: string,
+        price: number,
+        quantity: number,
+        location: Array<number>,
+        availableQuantity: number
+}
+
+export type OrderProductType = {
+        id: number,
+        name: string,
+        price: number,
+        quantity: number,
 }
 
 export type AccoutnType = {
@@ -13,18 +29,11 @@ export type AccoutnType = {
 }
 
 export type OrderType = {
-        id: number,
-        accountOrder: number,
+        orderNumber: number,
+        accountName: number,
         visitedLocations: Array<Array<number>>,
-        products: Array<any>,
+        products: Array<OrderProductType>,
         total: number
-}  
-export type OrederProductType = {
-        id: number,
-        name: string,
-        price: number,
-        quantity: number,
-        location: Array<number>
 }
 
 export type CartObjectType = {
@@ -32,4 +41,9 @@ export type CartObjectType = {
                 price: number,
                 quantity: number
         }
+}
+
+export type CartItemQuantityNPrice = {
+        quantity: number,
+        price: number;
 }

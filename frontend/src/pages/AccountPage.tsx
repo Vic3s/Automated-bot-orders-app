@@ -13,9 +13,10 @@ export const AccountPage = () => {
     const[accountInfo, setAccountInfo] = useState<AccoutnType>(Object);
     const[ordersAccount, setOrdersAccount] = useState(Array<OrderType>);
 
-    const GetAccountInfo = () => {
+    //user jwt token
+    const token = GetCookie("token");
 
-        const token = GetCookie("token");
+    const GetAccountInfo = () => {
 
         fetch("http://localhost:5000/get-account", SetAuthRequestHeaders("GET", {}, token))
         .then(response => { return response.json() })
@@ -24,12 +25,7 @@ export const AccountPage = () => {
     }
 
     const GetAccountOrdersHistory = () => {
-        fetch("http://localhost:5000/get-account-orders", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application-json"
-            },
-        })
+        fetch("http://localhost:5000/get-account-orders", SetAuthRequestHeaders("GET", {}, token))
         .then(response => { return response.json() })
         .then(data => setOrdersAccount(data))
         .catch(err => console.log(err));
@@ -79,6 +75,7 @@ export const AccountPage = () => {
                         {ordersAccount.map((item) => {
                             return <>
                                 <OrderItem orderData={item}/>
+                                <hr />
                             </>
                         })}
                     </div>

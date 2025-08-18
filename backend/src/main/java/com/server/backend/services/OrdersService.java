@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OrdersService {
@@ -47,12 +48,21 @@ public class OrdersService {
 
         return result;
     }
-    public ArrayList<ObjectNode> GetAccountOrders() {
+    public ArrayList<ObjectNode> GetAccountOrders(String authorization) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<ObjectNode> result = new ArrayList<>();
 
-        //get the current logged in account id from jwt account object
-        // and use it to ge the orders and fill the response list
+        List<OrderModel> accountOrders = repo.findAllByAccountName(jwtService.extractUsername(authorization));
+
+        for(OrderModel order : accountOrders){
+            ObjectNode orderNode = mapper.createObjectNode();
+            orderNode.put("orderNumber", order.getId());
+            orderNode.set("visitedLocations", order.getVisitedLocations());
+            orderNode.set("products", order.getProducts());
+            orderNode.put("total", order.getTotal());
+
+            result.add(orderNode);
+        }
 
         return result;
     }

@@ -5,7 +5,7 @@ import { CartItem } from "../components/CartItem";
 import { DeleteCartObject, getTotalPrice} from "../add-func/CartLocalStorage";
 import { getCartItems } from "../add-func/CartLocalStorage";
 import { GetCookie, SetAuthRequestHeaders } from "../add-func/UserAutorization";
-import type { ObjectType } from "../Types/Types";
+import type { CartItemQuantityNPrice, CartItemType, OrderProductType, ProductType } from "../Types/Types";
 import { useNavigate } from "react-router";
 
 
@@ -13,7 +13,7 @@ export const CartPage = () => {
 
     const navigate = useNavigate();
 
-    const[cartItems, setCartItems] = useState([]);
+    const[cartItems, setCartItems] = useState<CartItemType[]>(Array<any>);
     const[total, setTotal] = useState(0);
 
     const token = GetCookie("token");
@@ -32,7 +32,25 @@ export const CartPage = () => {
             })
         })
         .then(response => { return response.json() })
-        .then(data => setCartItems(data))
+        .then((data: Array<ProductType>) => {
+            const CartItemsList: Array<CartItemType> = [];
+
+            const idsList: Array<any> = getCartItems()[0];
+            const productInfoList: Array<CartItemQuantityNPrice> = getCartItems()[1] ;
+
+            for(let i=0; i< idsList.length; i++){
+                CartItemsList.push({
+                    "id": idsList[i],
+                    "location": data[i].location,
+                    "name": data[i].name,
+                    "price": data[i].price,
+                    "quantity": productInfoList[i].quantity,
+                    "availableQuantity": data[i].quantity
+                })
+            }
+            setCartItems(CartItemsList);
+        })
+        .catch(err => console.log(err));
     }
     useEffect(() => {
         GetCartItemsInfo()
@@ -74,7 +92,7 @@ export const CartPage = () => {
                             </div>
                         </div>
                         <div className="products-cart-container">
-                            {cartItems.map((cartItem: ObjectType) => {
+                            {cartItems.map((cartItem: CartItemType) => {
                                 return <>
                                 <CartItem key={cartItem.id} cartItemData={cartItem} onStateChange={() => {setTotal(getTotalPrice())}}/>
                                 </>

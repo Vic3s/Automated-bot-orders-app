@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { NavBar } from "../components/NavBar"
 import { Footer } from "../components/Footer"
 import { ProductItemCard } from "../components/ProductItemCard"
-import type { ObjectType } from "../Types/Types"
+import type { ProductType } from "../Types/Types"
 
 export const IndexPage = () => {
 
@@ -32,7 +32,7 @@ export const IndexPage = () => {
         <NavBar />
 
         <div className="product-contents">
-          {products.map((product: ObjectType) => {
+          {products.map((product: ProductType) => {
             return <>
               {product.name && <ProductItemCard productData={product}/> }
             </>

@@ -1,5 +1,8 @@
 package com.server.backend.models;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.server.backend.dto.OrderProduct;
 import org.springframework.core.annotation.Order;
@@ -13,7 +16,7 @@ import java.util.ArrayList;
 public class OrderModel {
 
     private long id;
-    private String accountOrder;
+    private String accountName;
     private ArrayList<ArrayList<Integer>> visitedLocations;
     private ArrayList<OrderProduct> products;
     private double total;
@@ -28,24 +31,34 @@ public class OrderModel {
 
     //Getter and Setter for orderedBy
     public String getAccountOrder() {
-        return accountOrder;
+        return accountName;
     }
-    public void setAccountOrder(String accountOrder) {
-        this.accountOrder = accountOrder;
+    public void setAccountOrder(String accountName) {
+        this.accountName = accountName;
     }
 
     //Getter and Setter for visitedLocations
-    public ArrayList<ArrayList<Integer>> getVisitedLocations() {
-        return visitedLocations;
+    public JsonNode getVisitedLocations() {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.convertValue(visitedLocations, new TypeReference<JsonNode>() {});
     }
+
+//    public ArrayList<ArrayList<Integer>> getVisitedLocations(){
+//        return visitedLocations;
+//    }
     public void setVisitedLocations(ArrayList<ArrayList<Integer>> visitedLocations) {
         this.visitedLocations = visitedLocations;
     }
 
     //Getter and setter for products
-    public ArrayList<OrderProduct> getProducts() {
-        return products;
+    public JsonNode getProducts() {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.convertValue(products, new TypeReference<JsonNode>() {});
     }
+
+//    public ArrayList<OrderProduct> getProducts(){
+//        return products;
+//    }
     public void setProducts(ArrayList<OrderProduct> products) {
         this.products = products;
     }

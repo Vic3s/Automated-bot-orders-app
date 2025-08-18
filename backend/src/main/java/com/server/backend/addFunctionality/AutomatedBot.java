@@ -44,13 +44,6 @@ public class AutomatedBot {
         // return to start
         botPath.add(new ArrayList<>(Arrays.asList(0, 0)));
 
-        for(ArrayList<Integer> location: botPath){
-            System.out.println("Visited location: ");
-            for(Integer coordinate : location){
-                System.out.println(coordinate);
-            }
-        }
-
         return botPath;
     }
 }

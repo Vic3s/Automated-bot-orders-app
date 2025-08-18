@@ -41,8 +41,8 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
     @GetMapping("/is-user-authenticated")
-    ResponseEntity<ObjectNode> IsUserAuthenticated(@RequestHeader("Authorization") String authorizationHeader){
-        ObjectNode response = accountService.IsUserAuthenticated(authorizationHeader);
+    ResponseEntity<ObjectNode> IsUserAuthenticated(@RequestHeader("Authorization") String authHeader){
+        ObjectNode response = accountService.IsUserAuthenticated(authHeader);
 
         return ResponseEntity.ok(response);
     }

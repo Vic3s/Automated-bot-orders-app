@@ -30,8 +30,8 @@ public class OrdersController {
         return ResponseEntity.ok(response);
     }
     @GetMapping("get-account-orders")
-    public ResponseEntity<ArrayList<ObjectNode>> GetAccountOrders(){
-        ArrayList<ObjectNode> response = ordersService.GetAccountOrders();
+    public ResponseEntity<ArrayList<ObjectNode>> GetAccountOrders(@RequestHeader("Authorization") String authHeader){
+        ArrayList<ObjectNode> response = ordersService.GetAccountOrders(authHeader);
 
         return ResponseEntity.ok(response);
     }

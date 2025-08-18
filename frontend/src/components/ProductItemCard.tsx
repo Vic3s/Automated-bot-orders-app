@@ -2,12 +2,12 @@ import "../styles/product.css"
 import { useState, useEffect} from "react"
 import {DecreaseQuantity, IncreaseQuantity, QuantitySelectFunctionality} from "../add-func/QuantityFunctionality"
 import { CreateCartObject, GetCartProductsObject } from "../add-func/CartLocalStorage"
-import type { ObjectType } from "../Types/Types";
+import type { CartItemType, ProductType } from "../Types/Types";
 import "../styles/product.css"
 
 //ProductType interface
 interface IProductItem {
-  productData: ObjectType;
+  productData: ProductType;
 }
 
 export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
@@ -18,8 +18,20 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
 
     const[quantityStyling, setQuantityStyling] = useState(false);
 
+    const[cartItem, setCartItem] = useState<CartItemType>(Object);
+
     const apiKey = import.meta.env.VITE_API_KEY;
 
+   const convertListToCartItemType = (initProductItem: ProductType): CartItemType => {
+        return {
+            id: initProductItem.id,
+            name: initProductItem.name,
+            price: initProductItem.price,
+            quantity: 0,
+            location: initProductItem.location,
+            availableQuantity: initProductItem.quantity
+        };
+    };
     const ChangeButtonStyle = () => {
         CreateCartObject(productData);
         setQuantityStyling(true);
@@ -40,11 +52,16 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
             setQuantityStyling(true);
             setQuantityProduct(cartObject[productId].quantity);
         }
+        if(!Object.keys(cartObject).includes(productData.id.toString())){
+            setQuantityStyling(false);
+            setQuantityProduct(1);
+        }
     }
 
     useEffect(() => {
         GetMockImage();
         isProductInCart();
+        setCartItem(convertListToCartItemType(productData));
     }, [])
 
     return (
@@ -61,10 +78,14 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
                     </div>
                     {quantityStyling ?
                     <div className="buttons-quantity-select-container">
-                        <button className="minus btn-primary" onClick={() => {DecreaseQuantity(productData); 
-                            setQuantityProduct(prev => prev = QuantitySelectFunctionality(productData.id.toString()))}}>-</button>
+                        <button className="minus btn-primary" onClick={() => {
+                            const cartObject = GetCartProductsObject();
+                            DecreaseQuantity(cartItem); 
+                            setQuantityProduct(prev => prev = QuantitySelectFunctionality(productData.id.toString()));
+                            isProductInCart();
+                            }}>-</button>
                         <div className="quantity">{quantityProduct}</div>
-                        <button className="plus btn-primary" onClick={() => {IncreaseQuantity(productData);
+                        <button className="plus btn-primary" onClick={() => {IncreaseQuantity(cartItem);
                             setQuantityProduct(prev => prev = QuantitySelectFunctionality(productData.id.toString()))
                         }}>+</button>
                     </div>

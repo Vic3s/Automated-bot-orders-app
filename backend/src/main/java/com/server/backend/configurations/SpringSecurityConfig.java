@@ -37,7 +37,7 @@ public class SpringSecurityConfig {
                         .requestMatchers("/post-login-data", "/post-register-data",
                                 "/is-user-authenticated", "/get-product-single",
                                 "/get-product-all", "/get-account", "/get-product-multiple",
-                                "/post-order")
+                                "/post-order", "get-account-orders")
                         .permitAll()
                         .anyRequest().authenticated())
 //                .formLogin(Customizer.withDefaults())
