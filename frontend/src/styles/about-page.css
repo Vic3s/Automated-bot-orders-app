@@ -1,0 +1,36 @@
+.about-main-container {
+  height: 85vh;
+  width: 100vw;
+}
+.about-main-container .about-image-text-container {
+  height: 100%;
+}
+.about-main-container .about-image-text-container .about-text {
+  width: 400px;
+}
+.about-main-container .about-image-text-container .about-text h2 {
+  width: 80%;
+  font-size: 50px;
+}
+.about-main-container .about-image-text-container .about-text h5 {
+  text-align: justify;
+  height: 100%;
+}
+.about-main-container .about-image-text-container .about-text h3 {
+  width: 100%;
+  color: rgb(197, 197, 197);
+}
+.about-main-container .about-image-text-container .about-image {
+  width: 400px;
+  height: 100%;
+}
+.about-main-container .about-image-text-container .about-image img {
+  width: 400px;
+  border-radius: 5px;
+}
+.about-main-container .about-image-text-container .about-image h2 {
+  width: 100%;
+  color: #5e9693;
+}
+
+/*# sourceMappingURL=about-page.css.map */

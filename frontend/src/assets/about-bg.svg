@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#ffffff"/>
+  
+  <!-- Lighter back circle (larger) -->
+  <circle cx="800" cy="300" r="350" fill="#5e9693" opacity="0.35"/>
+  
+  <!-- Main circle (larger) -->
+  <circle cx="950" cy="380" r="300" fill="#5e9693"/>
+  
+  <!-- Thick angled line (more visible) -->
+  <line x1="150" y1="520" x2="1500" y2="500" stroke="#5e9693" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Filled square (bigger) -->
+  <rect x="200" y="120" width="250" height="250" fill="#5e9693" rx="16" ry="16"/>
+  
+  <!-- Filled rectangle (bigger) -->
+  <rect x="200" y="560" width="600" height="250" fill="#5e9693" rx="20" ry="20"/>
+</svg>

@@ -6,11 +6,12 @@ import { CartPage } from './pages/CartPage.tsx'
 import { AccountPage } from './pages/AccountPage.tsx'
 import { LoginPage } from './pages/LoginPage.tsx'
 import { RegisterPage } from './pages/RegisterPage.tsx'
+import { AboutPage } from './pages/AboutPage.tsx'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
 const router = createBrowserRouter([{path: "/", element: <IndexPage/>}, {path: "/cart", element: <CartPage/>},
   {path:"/account", element: <AccountPage/>}, {path: "/login", element: <LoginPage />},
-  {path: "/register", element: <RegisterPage/>}
+  {path: "/register", element: <RegisterPage/>}, {path: "/about", element: <AboutPage/>}
 ])
 
 createRoot(document.getElementById('root')!).render(

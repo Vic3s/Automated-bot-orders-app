@@ -1,0 +1,37 @@
+.about-main-container{
+    height: 85vh;
+    width: 100vw;
+
+    .about-image-text-container{
+        height: 100%;
+        .about-text{
+            width: 400px;
+            h2{
+                width: 80%;
+                font-size: 50px;
+            }
+            h5{
+                text-align: justify;
+                height: 100%;
+            }
+            h3{
+                width: 100%;
+                color: rgb(197, 197, 197);
+            }
+        }
+        .about-image{
+            width: 400px;
+            height: 100%;
+            img{
+                width: 400px;
+                border-radius: 5px;
+            }
+            h2{
+                width: 100%;
+                color: #5e9693;
+            }
+        }
+    }
+
+    
+}
