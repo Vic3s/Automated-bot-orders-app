@@ -1,6 +1,13 @@
 .product-card-container .image-product-card-container img {
   object-fit: cover;
 }
+.product-card-container .card-body h5 {
+  text-align: center;
+  width: 210px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .product-card-container .buttons-quantity-select-container {
   width: 95%;
   display: flex;

@@ -71,10 +71,10 @@ export const ProductItemCard: React.FC<IProductItem> = ({ productData }) => {
                     <img src={mockImage} alt="Mock Image For ProductType" style={{"width": "250px", "height": "250px"}} />
                 </div>
                 <div className="card-body d-flex flex-column align-items-center">
-                    <h3 className="card-title fw-bold">{productData.name}</h3>
+                    <h5 className="card-title fw-bold">{productData.name}</h5>
 
                     <div className="price-text-container card-text">
-                        <h3 className="price-text">{productData.price}$</h3>
+                        <h3 className="price-text">{productData.price}€</h3>
                     </div>
                     {quantityStyling ?
                     <div className="buttons-quantity-select-container">

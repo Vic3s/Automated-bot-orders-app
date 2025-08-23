@@ -6,8 +6,7 @@
 .main-content-index .product-contents {
   width: 95%;
   display: grid;
-  grid-template-columns: repeat(5, 250px);
-  grid-auto-flow: column;
+  grid-template-columns: repeat(5, 277px);
   gap: 20px;
   margin: auto;
 }

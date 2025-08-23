@@ -58,7 +58,7 @@ export const CartItem: React.FC<IcartItem> = ({cartItemData, onStateChange}) => 
                             }}>+</button>
                     </div>
                     <div className="price-cart-container">
-                        <h3>{cartItemData.price}</h3>
+                        <h3>{cartItemData.price}€</h3>
                     </div>
                 </div>
             </div>

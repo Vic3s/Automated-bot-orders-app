@@ -103,7 +103,7 @@ export const CartPage = () => {
                     <div className="total-price">
                         <div className="total-price-text">
                             <span>Total:</span>
-                            <h3>{total}</h3>
+                            <h3>{total}€</h3>
                         </div>
                         <button className="send-order-btn btn-primary" onClick={(e) => {SendOrder(e); navigate("/")}}>Order</button>
                     </div>

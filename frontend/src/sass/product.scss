@@ -5,6 +5,15 @@
             object-fit: cover;
         }
     }
+    .card-body{
+        h5{
+            text-align: center;
+            width: 210px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
     
     .buttons-quantity-select-container{
         width: 95%;
