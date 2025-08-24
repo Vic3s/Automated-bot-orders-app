@@ -41,9 +41,9 @@ export const NavBar = () => {
 
     return (
         <>
-        <nav className="navbar navbar-expand-lg navbar-light mask-custom shadow-0">
+        <nav className="navbar d-flex flex-column navbar-expand-lg navbar-light sticky-top" style={{"backgroundColor": "white"}}>
         <div className="container">
-            <a className="navbar-brand fw-bold"  style={{"color": "#5e9693"}} href="">ShopUp</a>
+            <a className="navbar-brand fw-bold"  style={{"color": "#A16D28", "fontSize": "35px", "fontFamily": "'Sigmar', sans-serif"}} href="">ShopUp</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -52,10 +52,10 @@ export const NavBar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto">
                 <li className="nav-item">
-                <a className="nav-link fs-3" href="/">Home</a>
+                <a className="nav-link fs-3 fw-bold" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link fs-3" href="/about">About</a>
+                <a className="nav-link fs-3 fw-bold" href="/about">About</a>
                 </li>
             </ul>
             <ul className="navbar-nav d-flex flex-row">
@@ -68,6 +68,7 @@ export const NavBar = () => {
             </ul>
             </div>
         </div>
+        <div style={{"backgroundColor": "rgba(200, 200, 200, 1)", "height": "1px", "width": "90%"}}></div>
         </nav>
 
         </>

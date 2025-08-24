@@ -1,10 +1,10 @@
 .btn-primary{
-    background-color: rgb(94, 150, 147);
+    background-color: #A16D28;
     color: white;
-    border: 1px solid rgb(94, 150, 147);
+    border: 1px solid #A16D28;
     border-radius: 5px;
 }
 .btn-primary:hover{
-    background-color: rgb(53, 104, 102);
+    background-color: #C78A3B;
     color: white;
 }

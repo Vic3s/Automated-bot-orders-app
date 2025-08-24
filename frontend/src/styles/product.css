@@ -28,7 +28,7 @@
   border-bottom-left-radius: 8px;
 }
 .product-card-container .buttons-quantity-select-container .minus:active {
-  background-color: rgb(29, 66, 65);
+  background-color: #EAA64D;
 }
 .product-card-container .buttons-quantity-select-container .quantity {
   height: 100%;
@@ -53,7 +53,7 @@
   border-bottom-right-radius: 8px;
 }
 .product-card-container .buttons-quantity-select-container .plus:active {
-  background-color: rgb(29, 66, 65);
+  background-color: #EAA64D;
 }
 
 /*# sourceMappingURL=product.css.map */

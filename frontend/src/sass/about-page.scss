@@ -1,34 +1,55 @@
+$font-heading: 'BigMummy', sans-serif;
+
 .about-main-container{
-    height: 85vh;
-    width: 100vw;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
 
     .about-image-text-container{
         height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
         .about-text{
-            width: 400px;
+            width: 600px;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #543816;
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
             h2{
-                width: 80%;
+                font-family: $font-heading;
+                width: 100%;
                 font-size: 50px;
             }
-            h5{
+            p{
                 text-align: justify;
-                height: 100%;
             }
+            span{
+                font-weight: bold;
+                font-size: 18px;
+            };
             h3{
-                width: 100%;
                 color: rgb(197, 197, 197);
             }
         }
         .about-image{
-            width: 400px;
+            width: 520px;
             height: 100%;
             img{
-                width: 400px;
+                width: 520px;
                 border-radius: 5px;
             }
-            h2{
-                width: 100%;
-                color: #5e9693;
+            h3{
+                font-family: $font-heading;
             }
         }
     }
